@@ -1,0 +1,24 @@
+[project]
+name = "hasdata-indeed-mcp"
+version = "1.0.0"
+description = "MCP server for Indeed through HasData's hosted API. No Indeed developer account."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["mcp", "indeed", "jobs", "job-search", "model-context-protocol", "hasdata"]
+# mcp is pinned below 2 because mcp-proxy 0.12.0 imports request_ctx, removed in the mcp 2.x SDK.
+dependencies = ["mcp-proxy>=0.12.0", "mcp>=1.17,<2"]
+
+[project.urls]
+Homepage = "https://hasdata.com/apis/indeed-api"
+Repository = "https://github.com/HasData/indeed-mcp"
+
+[project.scripts]
+hasdata-indeed-mcp = "hasdata_indeed_mcp:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["hasdata_indeed_mcp"]
