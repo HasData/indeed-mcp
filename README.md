@@ -188,7 +188,7 @@ A page of search results by keyword and location.
 | `location` | string | yes | City and state, or any location string Indeed accepts |
 | `sort` | string | | `relevance` by default, or `date` for newest first |
 | `domain` | string | | A country site such as `au.indeed.com`. Defaults to the US site |
-| `start` | number | | Result offset for paging, in steps of the page size |
+| `start` | number | | Result offset for the next page, a number and not a URL. Read the offset from `pagination.nextPage` in the previous response |
 
 Returns `searchInformation`, a `jobs` array, `peopleAlsoSearchFor`, and `pagination` whose `nextPage` is the URL of the following page. Each job carries `title`, `company`, `location`, `url`, a short `description`, `sponsored`, the relative `date` and the absolute `isoDate`, a `details` array of labels like `Full-time` and `Hybrid work`, a `benefits` array, and a `salary` object when the posting states one.
 
@@ -304,7 +304,7 @@ No. The only credential is your HasData key. There is no Publisher account to ap
 
 ### How do I page through more than one screen of results?
 
-Pass the `start` offset to the listing tool. The response also returns `pagination.nextPage` as the URL of the following page, so an agent can walk results without computing offsets by hand.
+Pass the `start` offset to the listing tool as a number, not a URL. The response returns `pagination.nextPage`, whose own `start` value is the offset for the next page, so read that number and pass it back rather than feeding the URL in.
 
 ### Why is a salary sometimes missing?
 
