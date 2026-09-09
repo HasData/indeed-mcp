@@ -6,6 +6,8 @@ A hosted Model Context Protocol (MCP) server that gives Claude, Cursor, Windsurf
 
 It reads public job postings that a signed-out visitor can see.
 
+**1,000 free credits every month, no card required**, which is 200 Indeed calls.
+
 ```
 https://mcp.hasdata.com/api/mcp?apis=indeed
 ```
@@ -256,11 +258,11 @@ Results that carry data also carry a `requestMetadata.id` worth quoting in suppo
 
 Each Indeed tool costs **5 credits per successful call**. Response size does not change the price. A listing page with fifty jobs costs the same as one with two.
 
-The free trial is **1,000 credits over 30 days with no card**, which is 200 Indeed calls. After that an active account keeps getting 100 credits topped up each day whenever its balance drops below 100, so a low-volume agent runs on the free tier indefinitely.
+The free tier is **1,000 credits every month with no card**, which is 200 Indeed calls. It renews with the billing cycle, so a low-volume agent runs on the free tier indefinitely.
 
 Paid plans start at **$49 a month** for 200,000 credits, which is 40,000 calls. The unit price falls with volume, from **$1.23 per 1,000 calls** on the entry plan to **$0.50** on Business, **$0.42** on Growth and **$0.37** on the largest [high-volume plans](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=indeed-mcp).
 
-Your plan also sets concurrency. The free trial allows 1 request at a time, Startup 15, Business 30, Growth 50, and the high-volume plans run from 200 to 1,500. Handle the overflow case defensively in anything unattended.
+Your plan also sets concurrency. The free tier allows 1 request at a time, Startup 15, Business 30, Growth 50, and the high-volume plans run from 200 to 1,500. Handle the overflow case defensively in anything unattended.
 
 A request that comes back non-200 is not billed. A successful call that finds nothing is still a call.
 
