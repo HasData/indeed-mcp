@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hasdata-indeed-mcp",
+  "version": "1.0.1",
+  "description": "Indeed MCP server for Cursor. Job listings by keyword and location with salary, company and posting date, plus full job postings, as structured JSON. Remote MCP server hosted by HasData, connects over streamable HTTP with your HasData API key.",
+  "author": {
+    "name": "HasData",
+    "url": "https://hasdata.com"
+  },
+  "homepage": "https://hasdata.com/apis/indeed-api",
+  "repository": "https://github.com/HasData/indeed-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "indeed",
+    "indeed-mcp",
+    "jobs",
+    "job-search",
+    "model-context-protocol",
+    "hasdata",
+    "scraper"
+  ]
+}
