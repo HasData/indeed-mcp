@@ -176,10 +176,10 @@ Salary is on a listing only when the posting states one, so a "jobs with salary"
 
 ## Tools
 
-| Tool | Credits | What it returns |
-| :--- | :--- | :--- |
-| `hasdata_indeed_job_getJobDetails` | 5 | Job title, company, location, salary/compensation, employment type, posted date, full description, requirements/benefits, and apply URL |
-| `hasdata_indeed_listing_getJobListings` | 5 | An array of jobs with title, company, location, salary, posted date, job URL, and jobKey for the requested page |
+| Tool | What it returns |
+| --- | --- |
+| `hasdata_indeed_job_getJobDetails` | Job title, company, location, salary/compensation, employment type, posted date, full description, requirements/benefits, and apply URL. 5 credits a call |
+| `hasdata_indeed_listing_getJobListings` | An array of jobs with title, company, location, salary, posted date, job URL, and jobKey for the requested page. 5 credits a call |
 
 Two tools, read-only. Samples below are trimmed from real calls, and the numbers move as Indeed updates. Read them as shapes. Each tool name links to its endpoint reference, which carries the full field list.
 
