@@ -176,6 +176,11 @@ Salary is on a listing only when the posting states one, so a "jobs with salary"
 
 ## Tools
 
+| Tool | Credits | What it returns |
+| :--- | :--- | :--- |
+| `hasdata_indeed_job_getJobDetails` | 5 | Job title, company, location, salary/compensation, employment type, posted date, full description, requirements/benefits, and apply URL |
+| `hasdata_indeed_listing_getJobListings` | 5 | An array of jobs with title, company, location, salary, posted date, job URL, and jobKey for the requested page |
+
 Two tools, read-only. Samples below are trimmed from real calls, and the numbers move as Indeed updates. Read them as shapes. Each tool name links to its endpoint reference, which carries the full field list.
 
 The samples are the payload, not the whole response. A `tools/call` result carries one text block, and that text is itself JSON holding `url`, `status`, `text` and `json`, with the scraped data under `json`. From a raw JSON-RPC response the path is `result.content[0].text`, parsed, then `.json`. A chat client unwraps that for you and code talking to the endpoint directly does not.
