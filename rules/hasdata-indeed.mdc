@@ -5,7 +5,7 @@ alwaysApply: false
 
 # Indeed through HasData
 
-Two tools. `indeed_listing_getJobListings` needs both `keyword` and `location`. `indeed_job_getJobDetails` needs the posting `url`, which the listing tool returns.
+Two tools. `hasdata_indeed_listing_getJobListings` needs both `keyword` and `location`. `hasdata_indeed_job_getJobDetails` needs the posting `url`, which the listing tool returns.
 
 ## Search shape
 
