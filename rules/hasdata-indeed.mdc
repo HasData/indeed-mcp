@@ -1,0 +1,22 @@
+---
+description: How to pull Indeed job listings and postings through the HasData MCP server
+alwaysApply: false
+---
+
+# Indeed through HasData
+
+Two tools. `indeed_listing_getJobListings` needs both `keyword` and `location`. `indeed_job_getJobDetails` needs the posting `url`, which the listing tool returns.
+
+## Search shape
+
+`keyword` is the role as a candidate would type it, `location` is the city and region in Indeed's own wording, such as `Austin, TX`. `sort` takes relevance or date, and `start` pages. `domain` picks the country site, so a search on `indeed.com` and one on `uk.indeed.com` are different markets, not the same list translated.
+
+## Listings expire fast
+
+A posting that has been taken down answers with 400 and `requestMetadata.status` set to `error`. A URL from a search run a week ago is often already dead, so fetch details in the same session as the search, and treat a failure as an expired posting rather than a broken call.
+
+## Reading the payload
+
+A keyword and location pair with no openings returns a successful result with an empty `jobs` array. Salary is present only where the employer published it, so report it as missing rather than estimating.
+
+The listing already carries title, company, location, salary where given and the posting date. Open the details tool only when the task needs the full description, because that is one call per posting.
