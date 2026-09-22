@@ -3,7 +3,7 @@
   "mcpServers": {
     "indeed": {
       "type": "streamable-http",
-      "url": "https://mcp.hasdata.com/api/mcp?apis=indeed",
+      "url": "https://mcp.hasdata.com/mcp?apis=indeed",
       "headers": {
         "x-api-key": "YOUR_HASDATA_API_KEY"
       }
