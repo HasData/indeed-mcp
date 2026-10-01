@@ -6,7 +6,7 @@ A hosted Model Context Protocol (MCP) server that gives Claude, Cursor, Windsurf
 
 It reads public job postings that a signed-out visitor can see.
 
-**1,000 free credits every month, no card required**, which is 200 Indeed calls.
+**1,000 free credits every month, no card required**, which is 100 Indeed calls.
 
 ```
 https://mcp.hasdata.com/mcp?apis=indeed
@@ -154,23 +154,23 @@ For Python instead of Node, swap the launcher for the PyPI package, which `uvx` 
 
 ## Example prompts
 
-Prompts, not code. Paste one in and the agent picks the tool itself. Each is annotated with the calls it takes, because every successful call costs 5 credits.
+Prompts, not code. Paste one in and the agent picks the tool itself. Each is annotated with the calls it takes, because every successful call costs 10 credits.
 
 > Search Indeed for "python developer" jobs in New York sorted by date, and give me the ten most recent with company and salary.
 
-*One call, 5 credits. A listing page carries company, salary and posted date already.*
+*One call, 10 credits. A listing page carries company, salary and posted date already.*
 
 > Take the top posting from that search and pull its full description and requirements.
 
-*One call, 5 credits. The listing carries a job URL, which the details tool takes directly.*
+*One call, 10 credits. The listing carries a job URL, which the details tool takes directly.*
 
 > Find "data analyst" jobs in Austin, then pull full details on the three that list a salary.
 
-*Four calls, 20 credits. One listing, then one details call for each of the three.*
+*Four calls, 40 credits. One listing, then one details call for each of the three.*
 
 > Compare the salaries posted for "registered nurse" in Chicago against Houston.
 
-*Two calls, 10 credits, one listing per city.*
+*Two calls, 20 credits, one listing per city.*
 
 Salary is on a listing only when the posting states one, so a "jobs with salary" prompt filters on the field rather than assuming it. Paging costs a call each time, through the `start` offset.
 
@@ -178,8 +178,8 @@ Salary is on a listing only when the posting states one, so a "jobs with salary"
 
 | Tool | What it returns |
 | --- | --- |
-| `hasdata_indeed_job_getJobDetails` | Job title, company, location, salary/compensation, employment type, posted date, full description, requirements/benefits, and apply URL. 5 credits a call |
-| `hasdata_indeed_listing_getJobListings` | An array of jobs with title, company, location, salary, posted date, job URL, and jobKey for the requested page. 5 credits a call |
+| `hasdata_indeed_job_getJobDetails` | Job title, company, location, salary/compensation, employment type, posted date, full description, requirements/benefits, and apply URL. 10 credits a call |
+| `hasdata_indeed_listing_getJobListings` | An array of jobs with title, company, location, salary, posted date, job URL, and jobKey for the requested page. 10 credits a call |
 
 Two tools, read-only. Samples below are trimmed from real calls, and the numbers move as Indeed updates. Read them as shapes. Each tool name links to its endpoint reference, which carries the full field list.
 
@@ -261,11 +261,11 @@ Results that carry data also carry a `requestMetadata.id` worth quoting in suppo
 
 ## Pricing, free tier and limits
 
-Each Indeed tool costs **5 credits per successful call**. Response size does not change the price. A listing page with fifty jobs costs the same as one with two.
+Each Indeed tool costs **10 credits per successful call**. Response size does not change the price. A listing page with fifty jobs costs the same as one with two.
 
-The free tier is **1,000 credits every month with no card**, which is 200 Indeed calls. It renews with the billing cycle, so a low-volume agent runs on the free tier indefinitely.
+The free tier is **1,000 credits every month with no card**, which is 100 Indeed calls. It renews with the billing cycle, so a low-volume agent runs on the free tier indefinitely.
 
-Paid plans start at **$59 a month** for 200,000 credits, which is 40,000 calls. The unit price falls with volume, from **$1.48 per 1,000 calls** on the entry plan to **$0.60** on Basic and **$0.41** across the Growth tiers. Current figures live on the [pricing page](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=indeed-mcp).
+Paid plans start at **$59 a month** for 200,000 credits, which is 20,000 calls. The unit price falls with volume, from **$1.48 per 1,000 calls** on the entry plan to **$0.60** on Basic and **$0.41** across the Growth tiers. Current figures live on the [pricing page](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=indeed-mcp).
 
 Your plan also sets concurrency. The free tier allows 1 request at a time, Startup 5, Basic 15, and the Growth tiers run from 50 to 500. Handle the overflow case defensively in anything unattended.
 
@@ -345,7 +345,7 @@ HasData accesses publicly available data only. A platform's terms may restrict a
 
 This repository is configuration and documentation for a remote server. There is no build step and nothing to containerize.
 
-The tests in `test/` assert the tool contract, the part that can break without a commit here. They check that `?apis=indeed` returns exactly two tools, that every tool still declares its required parameters, that no name changed, and that the key in use is actually accepted. That last check calls a tool for real and costs 5 credits, which is the price of a canary that can fail for the right reason.
+The tests in `test/` assert the tool contract, the part that can break without a commit here. They check that `?apis=indeed` returns exactly two tools, that every tool still declares its required parameters, that no name changed, and that the key in use is actually accepted. That last check calls a tool for real and costs 10 credits, which is the price of a canary that can fail for the right reason.
 
 ```bash
 # macOS and Linux
