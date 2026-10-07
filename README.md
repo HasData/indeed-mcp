@@ -16,6 +16,7 @@ https://mcp.hasdata.com/mcp?apis=indeed
 [![tool contract](https://github.com/HasData/indeed-mcp/actions/workflows/contract.yml/badge.svg)](https://github.com/HasData/indeed-mcp/actions/workflows/contract.yml)
 [![MCP](https://img.shields.io/badge/MCP-remote%20%7C%20streamable%20HTTP-6366f1?style=flat-square)](https://modelcontextprotocol.io)
 [![Tools](https://img.shields.io/badge/tools-2-10b981?style=flat-square)](#tools)
+- [Prompts and resources](#prompts-and-resources)
 [![npm](https://img.shields.io/npm/v/@hasdata/indeed-mcp?style=flat-square&logo=npm&label=npm&color=cb3837)](https://www.npmjs.com/package/@hasdata/indeed-mcp)
 [![PyPI](https://img.shields.io/pypi/v/hasdata-indeed-mcp?style=flat-square&logo=pypi&logoColor=white&label=PyPI&color=3775a9)](https://pypi.org/project/hasdata-indeed-mcp/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
@@ -242,6 +243,23 @@ Returns `title`, `company`, `location`, `sponsored`, a `details` object with `jo
   "descriptionHtml": "<p><b>Overview</b></p><p>We are seeking a Python Developer...</p>"
 }
 ```
+
+## Prompts and resources
+
+The server ships one prompt, a ready-made workflow a client can offer instead of making the user compose a tool call.
+
+| Prompt | What it does |
+| --- | --- |
+| `indeed_hiring_map` | See where a role is being hired for and at what salary. |
+
+Alongside them the server exposes 2 resources, one per parameter whose accepted values are a fixed list. Reading one is cheaper than learning the vocabulary from a rejected call, and it costs no credits. Each URI is `hasdata://indeed/<parameter>`.
+
+| Parameter | Values | What it selects |
+| --- | ---: | --- |
+| `sort` | 2 | The sorting option for the search results. |
+| `domain` | 62 | The domain of the Indeed site (optional). |
+
+Both lists are served without an API key, so a client can read them before a user has signed up.
 
 ## Errors and failure paths
 
