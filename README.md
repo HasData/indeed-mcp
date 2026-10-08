@@ -252,12 +252,14 @@ The server ships one prompt, a ready-made workflow a client can offer instead of
 | --- | --- |
 | `indeed_hiring_map` | See where a role is being hired for and at what salary. |
 
-Alongside them the server exposes 2 resources, one per parameter whose accepted values are a fixed list. Reading one is cheaper than learning the vocabulary from a rejected call, and it costs no credits. Each URI is `hasdata://indeed/<parameter>`.
+Alongside them the server exposes 4 resources, one per parameter whose accepted values are a fixed list. Reading one is cheaper than learning the vocabulary from a rejected call, and it costs no credits. Each URI is `hasdata://indeed/<parameter>`.
 
 | Parameter | Values | What it selects |
 | --- | ---: | --- |
 | `sort` | 2 | The sorting option for the search results. |
 | `domain` | 62 | The domain of the Indeed site (optional). |
+| `datePosted` | 4 | Returns only jobs posted within the given number of days. |
+| `remoteType` | 2 | Returns only remote (`remote`) or hybrid (`hybrid`) jobs. In the US, Indeed ties fully remote jobs to the country rather than a city, so use a country-wide location such as `United States`: with a city, Indeed returns few or no remote jobs. |
 
 Both lists are served without an API key, so a client can read them before a user has signed up.
 
