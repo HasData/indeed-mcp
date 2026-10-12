@@ -20,3 +20,9 @@ A posting that has been taken down answers with 400 and `requestMetadata.status`
 A keyword and location pair with no openings returns a successful result with an empty `jobs` array. Salary is present only where the employer published it, so report it as missing rather than estimating.
 
 The listing already carries title, company, location, salary where given and the posting date. Open the details tool only when the task needs the full description, because that is one call per posting.
+
+## Prompts and resources
+
+The server also serves resources that spell out the accepted values of every parameter that takes a fixed list, each one at `hasdata://indeed/<parameter>`. Reading one spends no credits and makes no upstream request, which beats discovering the vocabulary from a rejected call. Listing them needs no API key either, so a client can read them before the user has connected an account.
+
+Ready-made prompts cover the usual workflows. Offer one of those before composing a tool call by hand.
